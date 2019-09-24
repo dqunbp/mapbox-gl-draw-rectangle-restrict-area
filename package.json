@@ -1,6 +1,6 @@
 {
   "name": "mapbox-gl-draw-rectangle-restrict-area",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "dqunbp",
   "license": "MIT",
   "repository": "dqunbp/mapbox-gl-draw-rectangle-restrict-area",
@@ -16,7 +16,8 @@
     "gh-pages": "^2.1.1",
     "rollup": "^1.20.0",
     "rollup-plugin-commonjs": "^10.0.0",
-    "rollup-plugin-node-resolve": "^5.1.0"
+    "rollup-plugin-node-resolve": "^5.1.0",
+    "rollup-plugin-peer-deps-external": "^2.2.0"
   },
   "scripts": {
     "build": "rollup -c",
