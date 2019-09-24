@@ -9455,7 +9455,7 @@ module.exports = function (options) {
 };
 
 module.exports.modes = require('./src/modes');
-},{"./src/setup":"node_modules/@mapbox/mapbox-gl-draw/src/setup.js","./src/options":"node_modules/@mapbox/mapbox-gl-draw/src/options.js","./src/api":"node_modules/@mapbox/mapbox-gl-draw/src/api.js","./src/constants":"node_modules/@mapbox/mapbox-gl-draw/src/constants.js","./src/modes":"node_modules/@mapbox/mapbox-gl-draw/src/modes/index.js"}],"node_modules/mapbox-gl-draw-rectangle-restrict-area/node_modules/@turf/helpers/index.js":[function(require,module,exports) {
+},{"./src/setup":"node_modules/@mapbox/mapbox-gl-draw/src/setup.js","./src/options":"node_modules/@mapbox/mapbox-gl-draw/src/options.js","./src/api":"node_modules/@mapbox/mapbox-gl-draw/src/api.js","./src/constants":"node_modules/@mapbox/mapbox-gl-draw/src/constants.js","./src/modes":"node_modules/@mapbox/mapbox-gl-draw/src/modes/index.js"}],"node_modules/@turf/helpers/index.js":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
@@ -10190,7 +10190,7 @@ function convertDistance() {
 }
 exports.convertDistance = convertDistance;
 
-},{}],"node_modules/mapbox-gl-draw-rectangle-restrict-area/node_modules/@turf/meta/index.js":[function(require,module,exports) {
+},{}],"node_modules/@turf/meta/index.js":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -11324,7 +11324,7 @@ exports.lineReduce = lineReduce;
 exports.findSegment = findSegment;
 exports.findPoint = findPoint;
 
-},{"@turf/helpers":"node_modules/mapbox-gl-draw-rectangle-restrict-area/node_modules/@turf/helpers/index.js"}],"node_modules/mapbox-gl-draw-rectangle-restrict-area/node_modules/@turf/area/index.js":[function(require,module,exports) {
+},{"@turf/helpers":"node_modules/@turf/helpers/index.js"}],"node_modules/@turf/area/index.js":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var meta_1 = require("@turf/meta");
@@ -11440,176 +11440,7 @@ function rad(num) {
     return num * Math.PI / 180;
 }
 
-},{"@turf/meta":"node_modules/mapbox-gl-draw-rectangle-restrict-area/node_modules/@turf/meta/index.js"}],"node_modules/mapbox-gl-draw-rectangle-restrict-area/node_modules/@mapbox/mapbox-gl-draw/src/constants.js":[function(require,module,exports) {
-module.exports = {
-  classes: {
-    CONTROL_BASE: 'mapboxgl-ctrl',
-    CONTROL_PREFIX: 'mapboxgl-ctrl-',
-    CONTROL_BUTTON: 'mapbox-gl-draw_ctrl-draw-btn',
-    CONTROL_BUTTON_LINE: 'mapbox-gl-draw_line',
-    CONTROL_BUTTON_POLYGON: 'mapbox-gl-draw_polygon',
-    CONTROL_BUTTON_POINT: 'mapbox-gl-draw_point',
-    CONTROL_BUTTON_TRASH: 'mapbox-gl-draw_trash',
-    CONTROL_BUTTON_COMBINE_FEATURES: 'mapbox-gl-draw_combine',
-    CONTROL_BUTTON_UNCOMBINE_FEATURES: 'mapbox-gl-draw_uncombine',
-    CONTROL_GROUP: 'mapboxgl-ctrl-group',
-    ATTRIBUTION: 'mapboxgl-ctrl-attrib',
-    ACTIVE_BUTTON: 'active',
-    BOX_SELECT: 'mapbox-gl-draw_boxselect'
-  },
-  sources: {
-    HOT: 'mapbox-gl-draw-hot',
-    COLD: 'mapbox-gl-draw-cold'
-  },
-  cursors: {
-    ADD: 'add',
-    MOVE: 'move',
-    DRAG: 'drag',
-    POINTER: 'pointer',
-    NONE: 'none'
-  },
-  types: {
-    POLYGON: 'polygon',
-    LINE: 'line_string',
-    POINT: 'point'
-  },
-  geojsonTypes: {
-    FEATURE: 'Feature',
-    POLYGON: 'Polygon',
-    LINE_STRING: 'LineString',
-    POINT: 'Point',
-    FEATURE_COLLECTION: 'FeatureCollection',
-    MULTI_PREFIX: 'Multi',
-    MULTI_POINT: 'MultiPoint',
-    MULTI_LINE_STRING: 'MultiLineString',
-    MULTI_POLYGON: 'MultiPolygon'
-  },
-  modes: {
-    DRAW_LINE_STRING: 'draw_line_string',
-    DRAW_POLYGON: 'draw_polygon',
-    DRAW_POINT: 'draw_point',
-    SIMPLE_SELECT: 'simple_select',
-    DIRECT_SELECT: 'direct_select',
-    STATIC: 'static'
-  },
-  events: {
-    CREATE: 'draw.create',
-    DELETE: 'draw.delete',
-    UPDATE: 'draw.update',
-    SELECTION_CHANGE: 'draw.selectionchange',
-    MODE_CHANGE: 'draw.modechange',
-    ACTIONABLE: 'draw.actionable',
-    RENDER: 'draw.render',
-    COMBINE_FEATURES: 'draw.combine',
-    UNCOMBINE_FEATURES: 'draw.uncombine'
-  },
-  updateActions: {
-    MOVE: 'move',
-    CHANGE_COORDINATES: 'change_coordinates'
-  },
-  meta: {
-    FEATURE: 'feature',
-    MIDPOINT: 'midpoint',
-    VERTEX: 'vertex'
-  },
-  activeStates: {
-    ACTIVE: 'true',
-    INACTIVE: 'false'
-  },
-  interactions: ['scrollZoom', 'boxZoom', 'dragRotate', 'dragPan', 'keyboard', 'doubleClickZoom', 'touchZoomRotate'],
-  LAT_MIN: -90,
-  LAT_RENDERED_MIN: -85,
-  LAT_MAX: 90,
-  LAT_RENDERED_MAX: 85,
-  LNG_MIN: -270,
-  LNG_MAX: 270
-};
-},{}],"node_modules/mapbox-gl-draw-rectangle-restrict-area/node_modules/@mapbox/mapbox-gl-draw/src/lib/common_selectors.js":[function(require,module,exports) {
-var Constants = require('../constants');
-
-module.exports = {
-  isOfMetaType: function isOfMetaType(type) {
-    return function (e) {
-      var featureTarget = e.featureTarget;
-      if (!featureTarget) return false;
-      if (!featureTarget.properties) return false;
-      return featureTarget.properties.meta === type;
-    };
-  },
-  isShiftMousedown: function isShiftMousedown(e) {
-    if (!e.originalEvent) return false;
-    if (!e.originalEvent.shiftKey) return false;
-    return e.originalEvent.button === 0;
-  },
-  isActiveFeature: function isActiveFeature(e) {
-    if (!e.featureTarget) return false;
-    if (!e.featureTarget.properties) return false;
-    return e.featureTarget.properties.active === Constants.activeStates.ACTIVE && e.featureTarget.properties.meta === Constants.meta.FEATURE;
-  },
-  isInactiveFeature: function isInactiveFeature(e) {
-    if (!e.featureTarget) return false;
-    if (!e.featureTarget.properties) return false;
-    return e.featureTarget.properties.active === Constants.activeStates.INACTIVE && e.featureTarget.properties.meta === Constants.meta.FEATURE;
-  },
-  noTarget: function noTarget(e) {
-    return e.featureTarget === undefined;
-  },
-  isFeature: function isFeature(e) {
-    if (!e.featureTarget) return false;
-    if (!e.featureTarget.properties) return false;
-    return e.featureTarget.properties.meta === Constants.meta.FEATURE;
-  },
-  isVertex: function isVertex(e) {
-    var featureTarget = e.featureTarget;
-    if (!featureTarget) return false;
-    if (!featureTarget.properties) return false;
-    return featureTarget.properties.meta === Constants.meta.VERTEX;
-  },
-  isShiftDown: function isShiftDown(e) {
-    if (!e.originalEvent) return false;
-    return e.originalEvent.shiftKey === true;
-  },
-  isEscapeKey: function isEscapeKey(e) {
-    return e.keyCode === 27;
-  },
-  isEnterKey: function isEnterKey(e) {
-    return e.keyCode === 13;
-  },
-  true: function _true() {
-    return true;
-  }
-};
-},{"../constants":"node_modules/mapbox-gl-draw-rectangle-restrict-area/node_modules/@mapbox/mapbox-gl-draw/src/constants.js"}],"node_modules/mapbox-gl-draw-rectangle-restrict-area/node_modules/@mapbox/mapbox-gl-draw/src/lib/create_vertex.js":[function(require,module,exports) {
-var Constants = require('../constants');
-/**
- * Returns GeoJSON for a Point representing the
- * vertex of another feature.
- *
- * @param {string} parentId
- * @param {Array<number>} coordinates
- * @param {string} path - Dot-separated numbers indicating exactly
- *   where the point exists within its parent feature's coordinates.
- * @param {boolean} selected
- * @return {GeoJSON} Point
- */
-
-
-module.exports = function (parentId, coordinates, path, selected) {
-  return {
-    type: Constants.geojsonTypes.FEATURE,
-    properties: {
-      meta: Constants.meta.VERTEX,
-      parent: parentId,
-      coord_path: path,
-      active: selected ? Constants.activeStates.ACTIVE : Constants.activeStates.INACTIVE
-    },
-    geometry: {
-      type: Constants.geojsonTypes.POINT,
-      coordinates: coordinates
-    }
-  };
-};
-},{"../constants":"node_modules/mapbox-gl-draw-rectangle-restrict-area/node_modules/@mapbox/mapbox-gl-draw/src/constants.js"}],"node_modules/mapbox-gl-draw-rectangle-restrict-area/dist/draw-rectangle-restrict-area.umd.js":[function(require,module,exports) {
+},{"@turf/meta":"node_modules/@turf/meta/index.js"}],"node_modules/mapbox-gl-draw-rectangle-restrict-area/dist/draw-rectangle-restrict-area.umd.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
 (function (global, factory) {
@@ -11846,7 +11677,7 @@ var global = arguments[3];
 
 }));
 
-},{"@turf/area":"node_modules/mapbox-gl-draw-rectangle-restrict-area/node_modules/@turf/area/index.js","@turf/helpers":"node_modules/mapbox-gl-draw-rectangle-restrict-area/node_modules/@turf/helpers/index.js","@mapbox/mapbox-gl-draw/src/constants":"node_modules/mapbox-gl-draw-rectangle-restrict-area/node_modules/@mapbox/mapbox-gl-draw/src/constants.js","@mapbox/mapbox-gl-draw/src/lib/common_selectors":"node_modules/mapbox-gl-draw-rectangle-restrict-area/node_modules/@mapbox/mapbox-gl-draw/src/lib/common_selectors.js","@mapbox/mapbox-gl-draw/src/lib/create_vertex":"node_modules/mapbox-gl-draw-rectangle-restrict-area/node_modules/@mapbox/mapbox-gl-draw/src/lib/create_vertex.js"}],"index.js":[function(require,module,exports) {
+},{"@turf/area":"node_modules/@turf/area/index.js","@turf/helpers":"node_modules/@turf/helpers/index.js","@mapbox/mapbox-gl-draw/src/constants":"node_modules/@mapbox/mapbox-gl-draw/src/constants.js","@mapbox/mapbox-gl-draw/src/lib/common_selectors":"node_modules/@mapbox/mapbox-gl-draw/src/lib/common_selectors.js","@mapbox/mapbox-gl-draw/src/lib/create_vertex":"node_modules/@mapbox/mapbox-gl-draw/src/lib/create_vertex.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11969,7 +11800,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64263" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55468" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
