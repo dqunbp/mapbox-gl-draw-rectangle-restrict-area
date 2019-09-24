@@ -1,21 +1,19 @@
 {
   "name": "mapbox-gl-draw-rectangle-restrict-area",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "dqunbp",
   "license": "MIT",
   "repository": "dqunbp/mapbox-gl-draw-rectangle-restrict-area",
   "main": "dist/draw-rectangle-restrict-area.cjs.js",
   "module": "dist/draw-rectangle-restrict-area.esm.js",
   "browser": "dist/draw-rectangle-restrict-area.umd.js",
-  "dependencies": {
-    "gh-pages": "^2.1.1"
-  },
+  "dependencies": {},
   "peerDependencies": {
-    "@mapbox/mapbox-gl-draw": "^1.1.2"
+    "@mapbox/mapbox-gl-draw": "^1.1.2",
+    "@turf/area": "^6.0.1"
   },
   "devDependencies": {
-    "@mapbox/mapbox-gl-draw": "^1.1.2",
-    "@turf/area": "^6.0.1",
+    "gh-pages": "^2.1.1",
     "rollup": "^1.20.0",
     "rollup-plugin-commonjs": "^10.0.0",
     "rollup-plugin-node-resolve": "^5.1.0"
