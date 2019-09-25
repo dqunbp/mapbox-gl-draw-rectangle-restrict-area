@@ -19,7 +19,7 @@ npm install --save @mapbox/mapbox-gl-draw
 
 ## Usage
 
-See [example](https://github.com/dqunbp/mapbox-gl-draw-rectangle-restrict-area/example)
+See [example](https://github.com/dqunbp/mapbox-gl-draw-rectangle-restrict-area/blob/master/example/index.js)
 
 ## License
 
