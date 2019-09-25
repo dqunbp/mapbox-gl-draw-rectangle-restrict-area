@@ -1,8 +1,14 @@
 # mapbox-gl-draw-rectangle-restrict-area
 
-> mapbox-gl drawing mode with
+> Draws rectangle, with optional area limitation
 
-[![NPM](https://img.shields.io/npm/v/mapbox-gl-draw-rectangle-restrict-area.svg)](https://www.npmjs.com/package/mapbox-gl-draw-rectangle-restrict-area) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/mapbox-gl-draw-rectangle-restrict-area.svg)](https://www.npmjs.com/package/mapbox-gl-draw-rectangle-restrict-area)
+
+## Features
+
+- One click drawing - _two click drawing also supported_
+- Mobile compabillity
+- Area square restriction **Optional**
 
 ## Install
 
@@ -10,7 +16,7 @@
 npm install --save mapbox-gl-draw-rectangle-restrict-area
 ```
 
-Install peer dependencies
+> Don't forget install the peer dependencies.
 
 ```bash
 npm install --save @turf/area
