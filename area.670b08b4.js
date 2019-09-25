@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"node_modules/@turf/meta/index.js":[function(require,module,exports) {
+})({"node_modules/mapbox-gl-draw-rectangle-restrict-area/node_modules/@turf/meta/index.js":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -1251,7 +1251,7 @@ exports.lineReduce = lineReduce;
 exports.findSegment = findSegment;
 exports.findPoint = findPoint;
 
-},{"@turf/helpers":"node_modules/@turf/helpers/index.js"}],"node_modules/@turf/area/index.js":[function(require,module,exports) {
+},{"@turf/helpers":"node_modules/mapbox-gl-draw-rectangle-restrict-area/node_modules/@turf/helpers/index.js"}],"node_modules/mapbox-gl-draw-rectangle-restrict-area/node_modules/@turf/area/index.js":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var meta_1 = require("@turf/meta");
@@ -1367,7 +1367,7 @@ function rad(num) {
     return num * Math.PI / 180;
 }
 
-},{"@turf/meta":"node_modules/@turf/meta/index.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"@turf/meta":"node_modules/mapbox-gl-draw-rectangle-restrict-area/node_modules/@turf/meta/index.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1571,4 +1571,4 @@ function hmrAcceptRun(bundle, id) {
   }
 }
 },{}]},{},["node_modules/parcel/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/area.f41b97ef.js.map
+//# sourceMappingURL=/area.670b08b4.js.map
