@@ -85,9 +85,10 @@ map.addControl(draw);
 document.getElementById("draw-rectangle").addEventListener("click", () => {
   console.log("let's draw!");
   draw.changeMode("draw_polygon", {
-    areaLimit: 5, // km2
-    allowCreateExceeded: false,
-    exceedCallsOnEachMove: false, // true - calls exceedCallback on each mouse move
-    exceedCallback: () => console.log("exceeded!")
+    areaLimit: 5, // required, km2
+    escapeKeyStopsDrawing: true, // optional
+    allowCreateExceeded: false, // optional
+    exceedCallsOnEachMove: false, // optional, true - calls exceedCallback on each mouse move
+    exceedCallback: area => console.log("exceeded!", area) // optional
   });
 });

@@ -16,9 +16,10 @@ const DrawRectangle = {};
 
 DrawRectangle.onSetup = function({
   areaLimit,
-  exceedCallback,
+  exceedCallback = () => {},
   exceedCallsOnEachMove = false,
-  allowCreateExceeded = false
+  allowCreateExceeded = false,
+  escapeKeyStopsDrawing = true
 }) {
   const rectangle = this.newFeature({
     type: Constants.geojsonTypes.FEATURE,
@@ -48,6 +49,7 @@ DrawRectangle.onSetup = function({
   this.exceedCallback = exceedCallback;
   this.allowCreateExceeded = allowCreateExceeded;
   this.exceedCallsOnEachMove = exceedCallsOnEachMove;
+  this.escapeStopsDrawing = escapeKeyStopsDrawing;
 
   return {
     rectangle,
@@ -119,9 +121,10 @@ DrawRectangle.onMouseMove = function(state, e) {
     state.rectangle.updateCoordinate(`0.0`, e.lngLat.lng, e.lngLat.lat);
   }
   if (this.areaLimit) {
-    if (getArea(state.rectangle) > this.areaLimit) {
+    let area = getArea(state.rectangle);
+    if (area > this.areaLimit) {
       if (!state.sizeExceeded || this.exceedCallsOnEachMove)
-        this.exceedCallback();
+        this.exceedCallback(area);
       state.sizeExceeded = true;
       state.rectangle.properties.size_exceed = true;
     } else {
@@ -157,14 +160,15 @@ DrawRectangle.onStop = function(state) {
 };
 
 DrawRectangle.onKeyUp = function(state, e) {
-  if (CommonSelectors.isEscapeKey(e)) {
-    this.deleteFeature([state.rectangle.id], { silent: true });
-    this.changeMode(Constants.modes.SIMPLE_SELECT);
-  } else if (CommonSelectors.isEnterKey(e)) {
-    this.changeMode(Constants.modes.SIMPLE_SELECT, {
-      featureIds: [state.rectangle.id]
-    });
-  }
+  if (CommonSelectors.isEscapeKey(e))
+    if (this.escapeStopsDrawing) {
+      this.deleteFeature([state.rectangle.id], { silent: true });
+      this.changeMode(Constants.modes.SIMPLE_SELECT);
+    } else if (CommonSelectors.isEnterKey(e)) {
+      this.changeMode(Constants.modes.SIMPLE_SELECT, {
+        featureIds: [state.rectangle.id]
+      });
+    }
 };
 
 DrawRectangle.onTrash = function(state) {
