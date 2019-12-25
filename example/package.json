@@ -1,7 +1,7 @@
 {
   "name": "mapbox-gl-draw-rectangle-restrict-area-example",
   "homepage": "https://dqunbp.github.io/mapbox-gl-draw-rectangle-restrict-area-example",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,8 @@
   "author": "dqunbp",
   "license": "MIT",
   "devDependencies": {
-    "parcel": "^1.12.3"
+    "parcel": "^1.12.4",
+    "parcel-plugin-clean-dist": "0.0.6"
   },
   "dependencies": {
     "@mapbox/mapbox-gl-draw": "^1.1.2",
