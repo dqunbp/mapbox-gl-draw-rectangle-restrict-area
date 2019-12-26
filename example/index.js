@@ -89,6 +89,7 @@ document.getElementById("draw-rectangle").addEventListener("click", () => {
     escapeKeyStopsDrawing: true, // optional
     allowCreateExceeded: false, // optional
     exceedCallsOnEachMove: false, // optional, true - calls exceedCallback on each mouse move
-    exceedCallback: area => console.log("exceeded!", area) // optional
+    exceedCallback: area => console.log("exceeded!", area), // optional
+    areaChangedCallback: area => console.log("area updated", area) // optional
   });
 });

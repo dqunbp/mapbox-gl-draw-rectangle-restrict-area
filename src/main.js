@@ -16,6 +16,7 @@ const DrawRectangle = {};
 
 DrawRectangle.onSetup = function({
   areaLimit,
+  areaChangedCallback = () => {},
   exceedCallback = () => {},
   exceedCallsOnEachMove = false,
   allowCreateExceeded = false,
@@ -50,11 +51,13 @@ DrawRectangle.onSetup = function({
   this.allowCreateExceeded = allowCreateExceeded;
   this.exceedCallsOnEachMove = exceedCallsOnEachMove;
   this.escapeStopsDrawing = escapeKeyStopsDrawing;
+  this.areaChangedCallback = areaChangedCallback;
 
   return {
     rectangle,
     dragMoving: false,
-    sizeExceeded: false
+    sizeExceeded: false,
+    currentArea: 0
   };
 };
 
@@ -122,6 +125,9 @@ DrawRectangle.onMouseMove = function(state, e) {
   }
   if (this.areaLimit) {
     let area = getArea(state.rectangle);
+    if (area > 0)
+      if (state.currentArea !== area) this.areaChangedCallback(area);
+    state.currentArea = area;
     if (area > this.areaLimit) {
       if (!state.sizeExceeded || this.exceedCallsOnEachMove)
         this.exceedCallback(area);
