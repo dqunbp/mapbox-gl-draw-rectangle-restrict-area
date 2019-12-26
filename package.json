@@ -1,6 +1,6 @@
 {
   "name": "mapbox-gl-draw-rectangle-restrict-area",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "dqunbp",
   "license": "MIT",
   "repository": "dqunbp/mapbox-gl-draw-rectangle-restrict-area",
@@ -29,5 +29,11 @@
   },
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "mapbox-gl",
+    "mapbox-gl-draw",
+    "draw",
+    "rectangle"
   ]
 }
