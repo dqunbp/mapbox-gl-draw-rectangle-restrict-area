@@ -1,5 +1,6 @@
 import area from "@turf/area";
 import { convertArea } from "@turf/helpers";
+
 import Constants from "@mapbox/mapbox-gl-draw/src/constants";
 import CommonSelectors from "@mapbox/mapbox-gl-draw/src/lib/common_selectors";
 import createVertex from "@mapbox/mapbox-gl-draw/src/lib/create_vertex";
@@ -20,15 +21,15 @@ DrawRectangle.onSetup = function({
   exceedCallback = () => {},
   exceedCallsOnEachMove = false,
   allowCreateExceeded = false,
-  escapeKeyStopsDrawing = true
+  escapeKeyStopsDrawing = true,
 }) {
   const rectangle = this.newFeature({
     type: Constants.geojsonTypes.FEATURE,
     properties: {},
     geometry: {
       type: Constants.geojsonTypes.POLYGON,
-      coordinates: [[]]
-    }
+      coordinates: [[]],
+    },
   });
   this.addFeature(rectangle);
 
@@ -57,7 +58,7 @@ DrawRectangle.onSetup = function({
     rectangle,
     dragMoving: false,
     sizeExceeded: false,
-    currentArea: 0
+    currentArea: 0,
   };
 };
 
@@ -79,7 +80,7 @@ DrawRectangle.onClick = function(state, e) {
     this.updateUIClasses({ mouse: "pointer" });
     state.endPoint = [e.lngLat.lng, e.lngLat.lat];
     this.changeMode(Constants.modes.SIMPLE_SELECT, {
-      featureIds: [state.rectangle.id]
+      featureIds: [state.rectangle.id],
     });
   }
 };
@@ -97,7 +98,7 @@ DrawRectangle.onTouchEnd = function(state, e) {
     this.updateUIClasses({ mouse: "pointer" });
     state.endPoint = [e.lngLat.lng, e.lngLat.lat];
     this.changeMode(Constants.modes.SIMPLE_SELECT, {
-      featureIds: [state.rectangle.id]
+      featureIds: [state.rectangle.id],
     });
   } else DrawRectangle.onClick(state, e);
 };
@@ -157,7 +158,7 @@ DrawRectangle.onStop = function(state) {
   state.rectangle.removeCoordinate("0.5");
   if (state.rectangle.isValid()) {
     this.map.fire(Constants.events.CREATE, {
-      features: [state.rectangle.toGeoJSON()]
+      features: [state.rectangle.toGeoJSON()],
     });
   } else {
     this.deleteFeature([state.rectangle.id], { silent: true });
@@ -172,7 +173,7 @@ DrawRectangle.onKeyUp = function(state, e) {
       this.changeMode(Constants.modes.SIMPLE_SELECT);
     } else if (CommonSelectors.isEnterKey(e)) {
       this.changeMode(Constants.modes.SIMPLE_SELECT, {
-        featureIds: [state.rectangle.id]
+        featureIds: [state.rectangle.id],
       });
     }
 };

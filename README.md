@@ -19,7 +19,6 @@ npm install --save mapbox-gl-draw-rectangle-restrict-area
 > Don't forget install the peer dependencies.
 
 ```bash
-npm install --save @turf/area
 npm install --save @mapbox/mapbox-gl-draw
 ```
 

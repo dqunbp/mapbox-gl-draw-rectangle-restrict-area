@@ -1,28 +1,18 @@
 import external from "rollup-plugin-peer-deps-external";
-import resolve from "rollup-plugin-node-resolve";
-import commonjs from "rollup-plugin-commonjs";
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
+import { terser } from "rollup-plugin-terser";
 import pkg from "./package.json";
 
-export default {
-  input: "src/main.js",
-  output: [
-    {
-      name: "drawRectangleRestrictArea",
-      file: pkg.browser,
-      format: "umd"
-    },
-    {
+export default [
+  {
+    input: "src/main.js",
+    plugins: [external(), resolve(), commonjs(), terser()],
+    output: {
       file: pkg.main,
       format: "cjs",
       exports: "named",
-      sourcemap: true
+      sourcemap: true,
     },
-    {
-      file: pkg.module,
-      format: "es",
-      exports: "named",
-      sourcemap: true
-    }
-  ],
-  plugins: [external(), resolve(), commonjs()]
-};
+  },
+];

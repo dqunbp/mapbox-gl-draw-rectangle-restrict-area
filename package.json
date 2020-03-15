@@ -1,23 +1,26 @@
 {
   "name": "mapbox-gl-draw-rectangle-restrict-area",
-  "version": "1.1.1",
+  "version": "0.0.0-development",
   "author": "dqunbp",
   "license": "MIT",
   "repository": "dqunbp/mapbox-gl-draw-rectangle-restrict-area",
   "main": "dist/draw-rectangle-restrict-area.cjs.js",
-  "module": "dist/draw-rectangle-restrict-area.esm.js",
-  "browser": "dist/draw-rectangle-restrict-area.umd.js",
-  "dependencies": {},
+  "dependencies": {
+    "@turf/area": "6.0.1"
+  },
   "peerDependencies": {
-    "@mapbox/mapbox-gl-draw": "^1.1.2",
-    "@turf/area": "^6.0.1"
+    "@mapbox/mapbox-gl-draw": "^1.1.2"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "11.0.2",
+    "@rollup/plugin-inject": "4.0.1",
+    "@rollup/plugin-node-resolve": "7.1.1",
+    "cz-conventional-changelog": "3.1.0",
     "gh-pages": "^2.1.1",
     "rollup": "^1.27.14",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-peer-deps-external": "^2.2.0"
+    "rollup-plugin-peer-deps-external": "^2.2.0",
+    "rollup-plugin-terser": "5.3.0",
+    "semantic-release": "^17.0.4"
   },
   "scripts": {
     "build": "rollup -c",
@@ -25,7 +28,9 @@
     "test": "node test/test.js",
     "pretest": "npm run build",
     "predeploy": "cd example && npm install && npm run build",
-    "deploy": "gh-pages -d example/dist"
+    "deploy": "gh-pages -d example/dist",
+    "semantic-release": "semantic-release",
+    "commit": "git-cz"
   },
   "files": [
     "dist"
@@ -35,5 +40,10 @@
     "mapbox-gl-draw",
     "draw",
     "rectangle"
-  ]
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
