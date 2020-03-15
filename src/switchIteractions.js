@@ -1,7 +1,7 @@
 export function getIneractionSwitch(name) {
   return {
-    enable: ctx => {
-      setTimeout(() => {
+    enable: function(ctx) {
+      setTimeout(function() {
         // First check we've got a map and some context.
         if (
           !ctx.map ||
@@ -17,11 +17,11 @@ export function getIneractionSwitch(name) {
       }, 0);
     },
     disable(ctx) {
-      setTimeout(() => {
+      setTimeout(function() {
         if (!ctx.map || !ctx.map[name]) return;
         // Always disable here, as it's necessary in some cases.
         ctx.map[name].disable();
       }, 0);
-    }
+    },
   };
 }

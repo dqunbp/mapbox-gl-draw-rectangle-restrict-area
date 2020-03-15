@@ -10,15 +10,19 @@ import { getIneractionSwitch } from "./switchIteractions";
 const doubleClickZoom = getIneractionSwitch("doubleClickZoom");
 const dragPan = getIneractionSwitch("dragPan");
 
-const convertToKm2 = value => convertArea(value, "meters", "kilometers");
-const getArea = feature => convertToKm2(area(feature));
+function convertToKm2(value) {
+  return convertArea(value, "meters", "kilometers");
+}
+function getArea(feature) {
+  convertToKm2(area(feature));
+}
 
 const DrawRectangle = {};
 
 DrawRectangle.onSetup = function({
-  areaLimit,
-  areaChangedCallback = () => {},
-  exceedCallback = () => {},
+  areaLimit = 510100000,
+  areaChangedCallback = function() {},
+  exceedCallback = function() {},
   exceedCallsOnEachMove = false,
   allowCreateExceeded = false,
   escapeKeyStopsDrawing = true,
@@ -40,7 +44,7 @@ DrawRectangle.onSetup = function({
   dragPan.disable(this);
 
   // Update cursor
-  setTimeout(() => {
+  setTimeout(function() {
     this.updateUIClasses({ mouse: Constants.cursors.ADD });
   }, 0);
   this.activateUIButton(Constants.types.POLYGON);
