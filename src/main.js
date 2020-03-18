@@ -20,7 +20,7 @@ function getArea(feature) {
 const DrawRectangle = {};
 
 DrawRectangle.onSetup = function({
-  areaLimit = 510100000,
+  areaLimit = 510100001,
   areaChangedCallback = function() {},
   exceedCallback = function() {},
   exceedCallsOnEachMove = false,
