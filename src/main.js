@@ -14,7 +14,7 @@ function convertToKm2(value) {
   return convertArea(value, "meters", "kilometers");
 }
 function getArea(feature) {
-  convertToKm2(area(feature));
+  return convertToKm2(area(feature));
 }
 
 const DrawRectangle = {};
