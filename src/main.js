@@ -19,10 +19,10 @@ function getArea(feature) {
 
 const DrawRectangle = {};
 
-DrawRectangle.onSetup = function({
+DrawRectangle.onSetup = function ({
   areaLimit = 510100001,
-  areaChangedCallback = function() {},
-  exceedCallback = function() {},
+  areaChangedCallback = function () {},
+  exceedCallback = function () {},
   exceedCallsOnEachMove = false,
   allowCreateExceeded = false,
   escapeKeyStopsDrawing = true,
@@ -44,9 +44,7 @@ DrawRectangle.onSetup = function({
   dragPan.disable(this);
 
   // Update cursor
-  setTimeout(function() {
-    this.updateUIClasses({ mouse: Constants.cursors.ADD });
-  }, 0);
+  this.updateUIClasses({ mouse: Constants.cursors.ADD });
   this.activateUIButton(Constants.types.POLYGON);
   this.setActionableState({ trash: true });
 
@@ -66,7 +64,7 @@ DrawRectangle.onSetup = function({
   };
 };
 
-DrawRectangle.onClick = function(state, e) {
+DrawRectangle.onClick = function (state, e) {
   // on first click, save clicked point coords as starting for rectangle
   if (!state.startPoint) {
     const startPoint = [e.lngLat.lng, e.lngLat.lat];
@@ -92,7 +90,7 @@ DrawRectangle.onClick = function(state, e) {
 DrawRectangle.onMouseUp = DrawRectangle.onClick;
 DrawRectangle.onMouseDown = DrawRectangle.onClick;
 DrawRectangle.onTouchStart = DrawRectangle.onClick;
-DrawRectangle.onTouchEnd = function(state, e) {
+DrawRectangle.onTouchEnd = function (state, e) {
   if (
     state.startPoint &&
     state.startPoint[0] !== e.lngLat.lng &&
@@ -107,11 +105,11 @@ DrawRectangle.onTouchEnd = function(state, e) {
   } else DrawRectangle.onClick(state, e);
 };
 
-DrawRectangle.onTap = function(state, e) {
+DrawRectangle.onTap = function (state, e) {
   if (!state.startPoint) this.onClick(state, e);
 };
 
-DrawRectangle.onMouseMove = function(state, e) {
+DrawRectangle.onMouseMove = function (state, e) {
   state.dragMoving = true;
   if (CommonSelectors.isVertex(e)) {
     this.updateUIClasses({ mouse: Constants.cursors.POINTER });
@@ -147,7 +145,7 @@ DrawRectangle.onMouseMove = function(state, e) {
 DrawRectangle.onDrag = DrawRectangle.onMouseMove;
 DrawRectangle.onTouchMove = DrawRectangle.onMouseMove;
 
-DrawRectangle.onStop = function(state) {
+DrawRectangle.onStop = function (state) {
   this.updateUIClasses({ mouse: Constants.cursors.NONE });
 
   // Enable iteractions
@@ -170,7 +168,7 @@ DrawRectangle.onStop = function(state) {
   }
 };
 
-DrawRectangle.onKeyUp = function(state, e) {
+DrawRectangle.onKeyUp = function (state, e) {
   if (CommonSelectors.isEscapeKey(e))
     if (this.escapeStopsDrawing) {
       this.deleteFeature([state.rectangle.id], { silent: true });
@@ -182,12 +180,12 @@ DrawRectangle.onKeyUp = function(state, e) {
     }
 };
 
-DrawRectangle.onTrash = function(state) {
+DrawRectangle.onTrash = function (state) {
   this.deleteFeature([state.rectangle.id], { silent: true });
   this.changeMode(Constants.modes.SIMPLE_SELECT);
 };
 
-DrawRectangle.toDisplayFeatures = function(state, geojson, display) {
+DrawRectangle.toDisplayFeatures = function (state, geojson, display) {
   const isActivePolygon = geojson.properties.id === state.rectangle.id;
   geojson.properties.active = isActivePolygon
     ? Constants.activeStates.ACTIVE
