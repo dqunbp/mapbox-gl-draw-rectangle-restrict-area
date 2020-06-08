@@ -20,6 +20,7 @@
       body {
         margin: 0;
         padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
       }
       #map {
         position: absolute;
@@ -36,10 +37,21 @@
         font-family: Arial, Helvetica, sans-serif;
         font-size: 18px;
         border: 2px dashed black;
-        background: lightgreen;
+        background: lightskyblue;
         padding: 25px;
         border-radius: 5px;
         cursor: pointer;
+      }
+
+      #area-container {
+        position: absolute;
+        background-color: whitesmoke;
+        border: 2px dashed black;
+        border-radius: 5px;
+        padding: 15px 25px;
+        margin: 15px;
+        top: 0;
+        left: 0;
       }
     </style>
 
@@ -47,6 +59,9 @@
   </head>
   <body>
     <div id="map"></div>
+    <div id="area-container">
+      <h1 id="area"></h1>
+    </div>
     <button id="draw-rectangle" class="draw">Draw Rectangle</button>
     <script src="index.js"></script>
   </body>

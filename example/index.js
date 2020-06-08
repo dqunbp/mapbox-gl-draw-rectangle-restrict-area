@@ -1,6 +1,7 @@
 import MapboxDraw from "@mapbox/mapbox-gl-draw";
-import DrawRectangle from "mapbox-gl-draw-rectangle-restrict-area";
-import defaultDrawThemes from "@mapbox/mapbox-gl-draw/src/lib/theme";
+import DrawRectangle, {
+  DrawStyles,
+} from "mapbox-gl-draw-rectangle-restrict-area";
 
 const OSM_STYLE = {
   version: 8,
@@ -24,72 +25,38 @@ const OSM_STYLE = {
   ],
 };
 
-function updateDrawThemes(themes) {
-  return defaultDrawThemes
-    .filter((theme) => !themes.map(({ id }) => id).includes(theme.id))
-    .concat(themes);
-}
-
-export const drawStyles = updateDrawThemes([
-  {
-    id: "gl-draw-polygon-fill-active",
-    type: "fill",
-    filter: ["all", ["==", "active", "true"], ["==", "$type", "Polygon"]],
-    paint: {
-      "fill-color": [
-        "case",
-        ["!", ["to-boolean", ["get", "user_size_exceed"]]],
-        "#fbb03b",
-        "#ff0000",
-      ],
-      "fill-opacity": 0.2,
-    },
-  },
-  {
-    id: "gl-draw-polygon-stroke-active",
-    type: "line",
-    filter: ["all", ["==", "active", "true"], ["==", "$type", "Polygon"]],
-    layout: {
-      "line-cap": "round",
-      "line-join": "round",
-    },
-    paint: {
-      "line-color": [
-        "case",
-        ["!", ["to-boolean", ["get", "user_size_exceed"]]],
-        "#fbb03b",
-        "#ff0000",
-      ],
-      "line-dasharray": [0.2, 2],
-      "line-width": 2,
-    },
-  },
-]);
-
 const map = new mapboxgl.Map({
   container: "map", // container id
   style: OSM_STYLE,
   center: [-91.874, 42.76], // starting position
   zoom: 12, // starting zoom
   modes: Object.assign(MapboxDraw.modes, {
-    draw_polygon: DrawRectangle,
+    draw_rectangle: DrawRectangle,
   }),
 });
 
 const draw = new MapboxDraw({
   userProperties: true,
   displayControlsDefault: false,
-  styles: drawStyles,
+  styles: DrawStyles,
 });
 map.addControl(draw);
+
+const currenArea = document.getElementById("area");
+currenArea.textContent = "Area 0 m2";
+
+function onAreaChanged(area) {
+  currenArea.textContent = `Area ${area.toFixed(2)} m2`;
+}
+
 document.getElementById("draw-rectangle").addEventListener("click", () => {
   console.log("let's draw!");
-  draw.changeMode("draw_polygon", {
-    areaLimit: 5, // required, km2
-    escapeKeyStopsDrawing: true, // optional
-    allowCreateExceeded: false, // optional
-    exceedCallsOnEachMove: false, // optional, true - calls exceedCallback on each mouse move
-    exceedCallback: (area) => console.log("exceeded!", area), // optional
-    areaChangedCallback: (area) => console.log("area updated", area), // optional
+  draw.changeMode("draw_rectangle", {
+    areaLimit: 5 * 1_000_000, // 5 km2, optional
+    escapeKeyStopsDrawing: true, // default true
+    allowCreateExceeded: false, // default false
+    exceedCallsOnEachMove: false, // default false - calls exceedCallback on each mouse move
+    exceedCallback: (area) => console.log(`area exceeded! ${area.toFixed(2)}`), // optional
+    areaChangedCallback: onAreaChanged,
   });
 });
