@@ -7,9 +7,7 @@ import { getIneractionSwitch } from "./switchIteractions";
 const doubleClickZoom = getIneractionSwitch("doubleClickZoom");
 const dragPan = getIneractionSwitch("dragPan");
 
-function getArea(feature) {
-  return area(feature);
-}
+const getArea = (feature) => area(feature);
 
 const DrawRectangle = {};
 

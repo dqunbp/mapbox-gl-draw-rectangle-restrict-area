@@ -43,10 +43,10 @@ const draw = new MapboxDraw({
 map.addControl(draw);
 
 const currenArea = document.getElementById("area");
-currenArea.textContent = "Area 0 m2";
+currenArea.textContent = "0";
 
 function onAreaChanged(area) {
-  currenArea.textContent = `Area ${area.toFixed(2)} m2`;
+  currenArea.textContent = `${(area / 1_000_000).toFixed(2)}`;
 }
 
 document.getElementById("draw-rectangle").addEventListener("click", () => {
