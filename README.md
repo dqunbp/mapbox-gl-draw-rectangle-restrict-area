@@ -1,6 +1,8 @@
 # mapbox-gl-draw-rectangle-restrict-area
 
-> Draws rectangle, with optional area limitation
+Draws rectangle, with optional area limitation
+
+## [DEMO](https://dqunbp.github.io/mapbox-gl-draw-rectangle-restrict-area/)
 
 [![NPM](https://img.shields.io/npm/v/mapbox-gl-draw-rectangle-restrict-area.svg)](https://www.npmjs.com/package/mapbox-gl-draw-rectangle-restrict-area)
 
