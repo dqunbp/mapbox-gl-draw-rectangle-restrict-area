@@ -1,7 +1,6 @@
 import area from "@turf/area";
-import Constants from "@mapbox/mapbox-gl-draw/src/constants";
-import CommonSelectors from "@mapbox/mapbox-gl-draw/src/lib/common_selectors";
-import createVertex from "@mapbox/mapbox-gl-draw/src/lib/create_vertex";
+import { Constants, CommonSelectors, createVertex } from "./lib";
+
 import { getIneractionSwitch } from "./switchIteractions";
 
 const doubleClickZoom = getIneractionSwitch("doubleClickZoom");
