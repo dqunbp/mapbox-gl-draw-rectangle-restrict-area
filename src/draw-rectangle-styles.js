@@ -1,4 +1,4 @@
-import defaultDrawThemes from "@mapbox/mapbox-gl-draw/src/lib/theme";
+import { drawThemes } from "./lib";
 
 const ActivePolygonStyles = [
   {
@@ -37,7 +37,7 @@ const ActivePolygonStyles = [
 ];
 
 function overrideDefaultStyles(themes) {
-  return defaultDrawThemes
+  return drawThemes
     .filter((theme) => !themes.map(({ id }) => id).includes(theme.id))
     .concat(themes);
 }
