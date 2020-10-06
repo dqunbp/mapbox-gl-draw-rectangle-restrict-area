@@ -1,6 +1,6 @@
 # mapbox-gl-draw-rectangle-restrict-area
 
-Draws rectangle, with optional area limitation
+[mapbox-gl](https://github.com/mapbox/mapbox-gl-draw) Draw rectangle mode, with optional area limitation
 
 ## [DEMO](https://dqunbp.github.io/mapbox-gl-draw-rectangle-restrict-area/)
 
@@ -31,15 +31,15 @@ const map = new mapboxgl.Map({
   style: "mapbox://styles/mapbox/streets-v11",
   center: [-91.874, 42.76], // starting position
   zoom: 12, // starting zoom
-  modes: Object.assign(MapboxDraw.modes, {
-    draw_rectangle: DrawRectangle,
-  }),
 });
 
 const draw = new MapboxDraw({
   userProperties: true,
   displayControlsDefault: false,
   styles: DrawStyles,
+  modes: Object.assign(MapboxDraw.modes, {
+    draw_rectangle: DrawRectangle,
+  }),
 });
 map.addControl(draw);
 
