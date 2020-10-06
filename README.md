@@ -1,6 +1,6 @@
 # mapbox-gl-draw-rectangle-restrict-area
 
-[mapbox-gl](https://github.com/mapbox/mapbox-gl-draw) Draws rectangle mode, with optional area limitation
+[mapbox-gl](https://github.com/mapbox/mapbox-gl-draw) Draw rectangle mode, with optional area limitation
 
 ## [DEMO](https://dqunbp.github.io/mapbox-gl-draw-rectangle-restrict-area/)
 
