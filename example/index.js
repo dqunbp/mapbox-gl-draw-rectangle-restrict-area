@@ -30,15 +30,15 @@ const map = new mapboxgl.Map({
   style: OSM_STYLE,
   center: [-91.874, 42.76], // starting position
   zoom: 12, // starting zoom
-  modes: Object.assign(MapboxDraw.modes, {
-    draw_rectangle: DrawRectangle,
-  }),
 });
 
 const draw = new MapboxDraw({
   userProperties: true,
   displayControlsDefault: false,
   styles: DrawStyles,
+  modes: Object.assign(MapboxDraw.modes, {
+    draw_rectangle: DrawRectangle,
+  }),
 });
 map.addControl(draw);
 
