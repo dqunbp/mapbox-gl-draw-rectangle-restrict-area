@@ -12,7 +12,7 @@
   "author": "dqunbp",
   "license": "MIT",
   "devDependencies": {
-    "parcel": "^1.12.4",
+    "parcel": "^2.8.2",
     "parcel-plugin-clean-dist": "0.0.6"
   },
   "dependencies": {
